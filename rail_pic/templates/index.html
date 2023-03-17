@@ -1,0 +1,21 @@
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        <div class="box">
+            <div>
+                <img src="{% static 'images/pancakezz.jpg' %}">
+            </div>
+            {%  for cont in all_content %}
+            <div>
+                <h1>{{ cont.contentWords }}</h1>
+            </div>
+            {%  endfor %}
+            <div>
+                <h2>by Thomas L.</h2>
+            </div>
+        </div>
+    </body>
+<html>
