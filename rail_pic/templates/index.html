@@ -5,9 +5,11 @@
     </head>
     <body>
         <div class="box">
+            {% for img in all_content %}
             <div>
-                <img src="{% static 'images/pancakezz.jpg' %}">
+                <img src="{{ img.contentImage.url }}">
             </div>
+            {%  endfor %}
             {%  for cont in all_content %}
             <div>
                 <h1>{{ cont.contentWords }}</h1>
