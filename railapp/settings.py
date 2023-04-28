@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import environ
+import cloudinary_storage
 
 env = environ.Env()
 environ.Env.read_env()
@@ -34,6 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rail_pic',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +136,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('DJANGO_CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': env('DJANGO_CLOUDINARY_API_KEY'),
+    'API_SECRET': env('DJANGO_CLOUDINARY_API_SECRET'),
+}
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
